@@ -132,7 +132,7 @@ describe ('wordSearch', () => {
 // b) Create the function that makes the test pass.
 
 // pseudo code:
-// what's needed: function "wordSearch" that accepts an array and a single letter string as arguments and returns an array with only values containing the string.
+// what's needed: function "wordSearch" that accepts an array and a single letter string as arguments and returns an array with only values containing the string
 // create a working array to hold the filtered items
 // iterate the array using .filter() to pick out only the values containing the argument string
     // found that I need to do value.toLowerCase().include in order to match casing or it misses values
@@ -140,7 +140,7 @@ describe ('wordSearch', () => {
 // output: an array containing only values that contain the string
 
 const wordSearch = (array, string) => {
-    let filteredArray = array.filter(value => value.toLowerCase.includes(string))
+    let filteredArray = array.filter(value => value.toLowerCase().includes(string))
     return filteredArray
 }
 
@@ -163,4 +163,58 @@ const hand3 = [5, 5, 5, 5, 4]
 const hand4 = [7, 2, 7, 2, 7]
 // Expected output: true
 
+// pseudo code:
+// Using jest test template to test a function "fullestHouse" that takes in an array of 5 numbers and determines whether or not the array is a "full house"
+// it "takes takes in an array of 5 numbers and determines whether or not the array is a full house"
+// expect(fullestHouse(hand1)).toEqual(true)
+// expect(fullestHouse(hand2)).toEqual(false)
+// expect(fullestHouse(hand3)).toEqual(false)
+// expect(fullestHouse(hand4)).toEqual(true)
+// input: since there isn't a function to test, there is no input and I expect a fail (red)
+// output: should output a ReferenceError: fullestHouse is not defined
+
+describe ('fullestHouse', () => {
+    it ("takes takes in an array of 5 numbers and determines whether or not the array is a full house", () => {
+        expect(fullestHouse(hand1)).toEqual(true)
+        expect(fullestHouse(hand2)).toEqual(false)
+        expect(fullestHouse(hand3)).toEqual(false)
+        expect(fullestHouse(hand4)).toEqual(true)
+    })
+})
+
+// output: 
+// FAIL  ./code-challenges.test.js
+// ReferenceError: fullestHouse is not defined
+
 // b) Create the function that makes the test pass.
+
+// pseudo code:
+// what's needed: a function "fullestHouse" that takes in an array of 5 numbers and determines whether or not the array is a "full house"
+// create an empty count array: const count = {}
+    // I wasn't sure how to count the elements and I was considering the forEach but I wasn't getting it done. I found for...of doing research. Ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
+// use for...of to iterate the array and count the instances of each element
+// check if count includes 3 and 2 
+    // couldn't remember how to access only the values of an object. Ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values
+// input: an array of 5 numbers
+// output: boolean
+
+const fullestHouse = (array) => {
+    const count = {}
+    for (const element of array) {
+        if (count[element]) {  // here I am checking if the element has already been added to the count array
+            count[element] += 1  // if it is then I add +1 to the count
+        } else {
+            count[element] = 1  // if the element isn't already there then I add it and give it a 1 as a value
+        } 
+    } // at this point count has become a dictionary-like-object so I need to access the values and check for full house
+    if (Object.values(count).includes(3) && Object.values(count).includes(2)){
+        return true
+    } else {
+        return false
+    }
+}
+
+// output: 
+// PASS  ./code-challenges.test.js
+// Test Suites: 1 passed, 1 total
+// Tests:       3 passed, 3 total

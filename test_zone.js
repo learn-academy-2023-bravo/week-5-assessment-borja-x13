@@ -49,3 +49,36 @@ const wordSearch = (array, string) => {
 console.log(wordSearch(fruitArray, letterA))
 console.log(wordSearch(fruitArray, letterE))
 
+// --------------------3)
+
+const hand1 = [5, 5, 5, 3, 3]
+// Expected output: true
+const hand2 = [5, 5, 3, 3, 4]
+// Expected output: false
+const hand3 = [5, 5, 5, 5, 4]
+// Expected output: false
+const hand4 = [7, 2, 7, 2, 7]
+// Expected output: true
+
+
+
+const fullestHouse = (array) => {
+    const count = {}
+    for (const element of array) {
+        if (count[element]) {  // here I am checking if the element has already been added to the count array
+            count[element] += 1  // if it is then I add +1 to the count
+        } else {
+            count[element] = 1  // if the element isn't already there then I add it and give it a 1 as a value
+        } 
+    }
+    if (Object.values(count).includes(3) && Object.values(count).includes(2)){
+        return true
+    } else {
+        return false
+    }
+}
+
+console.log(fullestHouse(hand1))
+console.log(fullestHouse(hand2))
+console.log(fullestHouse(hand3))
+console.log(fullestHouse(hand4))
