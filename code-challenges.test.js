@@ -10,6 +10,16 @@
 // Reminder: The test will call your function
 // Run the file with the following command: $ yarn jest
 
+
+//------------------------------------ Assessment Start ------------------------------------
+
+// jest test template:
+// describe ("nameOfFunction", () => {
+//     it("explains what it takes and return expectation in plain English as this is for the programmer", () => {
+//         expect(nameOfFunction()).toEqual(expected return)
+//     })
+// })
+
 // --------------------1) Create a function that takes in a string and returns a string with a coded message. The coded message converts "a" to 4, "e" to 3, "i" to 1, and "o" to 0.
 
 // a) Create a test with expect statements using the variables provided.
@@ -21,7 +31,83 @@ const secretCodeWord2 = "Gobbledygook"
 const secretCodeWord3 = "Eccentric"
 // Expected output: "3cc3ntr1c"
 
+//------------------------------------ My Test Code ------------------------------------
+
+// pseudo code:
+// Using jest test template to test a function "encrypt" that accepts a string as an argument and returns the string as a coded message. The coded message converts "a" to 4, "e" to 3, "i" to 1, and "o" to 0
+// it "takes as an argument a string, returns the string converted"
+// expect(encrypt(secretCodeWord1)).toEqual("L4ck4d41s1c4l")
+// expect(encrypt(secretCodeWord2)).toEqual("G0bbl3dyg00k")
+// expect(encrypt(secretCodeWord3)).toEqual("3cc3ntr1c")
+// input: since there isn't a function to test, there is no input and I expect a fail (red)
+// output: should output a ReferenceError: encrypt is not defined
+
+describe ('encrypt', () => {
+    it ("takes as an argument a string, returns the string converted", () => {
+        expect(encrypt(secretCodeWord1)).toEqual("L4ck4d41s1c4l")
+        expect(encrypt(secretCodeWord2)).toEqual("G0bbl3dyg00k")
+        expect(encrypt(secretCodeWord3)).toEqual("3cc3ntr1c")
+    })
+})
+
+// output:
+// FAIL  ./code-challenges.test.js
+// ReferenceError: encrypt is not defined
+
 // b) Create the function that makes the test pass.
+
+// pseudo code:
+// what's needed: A function 'encrypt' that accepts a string as an argument and returns the string as a coded message. The coded message converts "a" to 4, "e" to 3, "i" to 1, and "o" to 0
+// since JS strings are inmutable, I need to convert it to an array using .split('') which will make each letter its own value in the array.
+    // need a variable to hold the temporary array
+// iterate the resulting array using .map() to change the values accordingly.
+// convert the array back into a string using .join('') 
+// input: a string
+// output: the string modified... "a" to 4, "e" to 3, "i" to 1, and "o" to 0
+
+const encrypt = (string) => {
+    // turn string into an array with each letter being indexed
+    let working_array = string.split('')
+    // need to save the .map into a new array or set the current variable to the mapped values since map isn't a mutator method
+    working_array = working_array.map ((value) => {
+        if (value.toLowerCase() === 'a') {
+            return value = '4'
+        }
+        if (value.toLowerCase() === 'e') {
+            return value = '3'
+        }
+        if (value.toLowerCase() === 'i') {
+            return value = '1'
+        }
+        if (value.toLowerCase() === 'o') {
+            return value = '0'
+        }
+        return value
+    })
+    // convert the array back into a string and return it
+    return working_array.join('')
+}
+
+// output:
+// PASS  ./code-challenges.test.js
+// Test Suites: 1 passed, 1 total
+// Tests:       1 passed, 1 total
+
+// learning moment: I couldnt get .map() working by using if/else if/ else I don't fully understand why and I will have to keep researching this. I was able to finally make it work with single if statements.
+// there has to be a simpler way. I will look into regular expressions as that seems promissing. 
+
+
+//------------------------------------ My Test Code ------------------------------------
+
+// pseudo code:
+// Using jest test template to test a function "encrypt" that accepts a string as an argument and returns the string as a coded message. The coded message converts "a" to 4, "e" to 3, "i" to 1, and "o" to 0
+// it "takes as an argument a string, returns the string converted"
+// expect(encrypt(secretCodeWord1)).toEqual("L4ck4d41s1c4l")
+// expect(encrypt(secretCodeWord2)).toEqual("G0bbl3dyg00k")
+// expect(encrypt(secretCodeWord3)).toEqual("3cc3ntr1c")
+// input: since there isn't a function to test, there is no input and I expect a fail (red)
+// output: should output a ReferenceError: encrypt is not defined
+
 
 // --------------------2) Create a function that takes in an array of words and a single letter and returns an array of all the words containing that particular letter.
 
