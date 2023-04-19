@@ -67,9 +67,9 @@ describe ('encrypt', () => {
 
 const encrypt = (string) => {
     // turn string into an array with each letter being indexed
-    let working_array = string.split('')
+    let workingArray = string.split('')
     // need to save the .map into a new array or set the current variable to the mapped values since map isn't a mutator method
-    working_array = working_array.map ((value) => {
+    workingArray = workingArray.map ((value) => {
         if (value.toLowerCase() === 'a') {
             return value = '4'
         }
@@ -85,7 +85,7 @@ const encrypt = (string) => {
         return value
     })
     // convert the array back into a string and return it
-    return working_array.join('')
+    return workingArray.join('')
 }
 
 // output:
@@ -95,18 +95,6 @@ const encrypt = (string) => {
 
 // learning moment: I couldnt get .map() working by using if/else if/ else I don't fully understand why and I will have to keep researching this. I was able to finally make it work with single if statements.
 // there has to be a simpler way. I will look into regular expressions as that seems promissing. 
-
-
-//------------------------------------ My Test Code ------------------------------------
-
-// pseudo code:
-// Using jest test template to test a function "encrypt" that accepts a string as an argument and returns the string as a coded message. The coded message converts "a" to 4, "e" to 3, "i" to 1, and "o" to 0
-// it "takes as an argument a string, returns the string converted"
-// expect(encrypt(secretCodeWord1)).toEqual("L4ck4d41s1c4l")
-// expect(encrypt(secretCodeWord2)).toEqual("G0bbl3dyg00k")
-// expect(encrypt(secretCodeWord3)).toEqual("3cc3ntr1c")
-// input: since there isn't a function to test, there is no input and I expect a fail (red)
-// output: should output a ReferenceError: encrypt is not defined
 
 
 // --------------------2) Create a function that takes in an array of words and a single letter and returns an array of all the words containing that particular letter.
@@ -120,7 +108,47 @@ const letterA = "a"
 const letterE = "e"
 // Expected output: ["Cherry", "Blueberry", "Peach"]
 
+//------------------------------------ My Test Code ------------------------------------
+
+// pseudo code:
+// Using jest test template to test a function "wordSearch" that accepts an array and a single letter string as arguments and returns an array with only values containing the string.
+// it "takes as an argument an array and a string, returns an array of only values containing the given string"
+// expect(wordSearch(fruitArray, letterA)).toEqual(["Mango", "Apricot", "Peach"])
+// expect(wordSearch(fruitArray, letterE)).toEqual(["Cherry", "Blueberry", "Peach"])
+// input: since there isn't a function to test, there is no input and I expect a fail (red)
+// output: should output a ReferenceError: wordSearch is not defined
+
+describe ('wordSearch', () => {
+    it ("takes as an argument an array and a string, returns an array of only values containing the given string", () => {
+        expect(wordSearch(fruitArray, letterA)).toEqual(["Mango", "Apricot", "Peach"])
+        expect(wordSearch(fruitArray, letterE)).toEqual(["Cherry", "Blueberry", "Peach"])
+    })
+})
+
+// output: 
+// FAIL  ./code-challenges.test.js
+// ReferenceError: wordSearch is not defined
+
 // b) Create the function that makes the test pass.
+
+// pseudo code:
+// what's needed: function "wordSearch" that accepts an array and a single letter string as arguments and returns an array with only values containing the string.
+// create a working array to hold the filtered items
+// iterate the array using .filter() to pick out only the values containing the argument string
+    // found that I need to do value.toLowerCase().include in order to match casing or it misses values
+// input: an array and a string
+// output: an array containing only values that contain the string
+
+const wordSearch = (array, string) => {
+    let filteredArray = array.filter(value => value.toLowerCase.includes(string))
+    return filteredArray
+}
+
+// output:
+// PASS  ./code-challenges.test.js
+// Test Suites: 1 passed, 1 total
+// Tests:       2 passed, 2 total
+
 
 // --------------------3) Create a function that takes in an array of 5 numbers and determines whether or not the array is a "full house". A full house is exactly one pair and one three of a kind.
 

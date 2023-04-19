@@ -31,3 +31,21 @@ const encrypt = (string) => {
 console.log(encrypt(secretCodeWord1))
 console.log(encrypt(secretCodeWord2))
 console.log(encrypt(secretCodeWord3))
+
+
+
+const fruitArray = ["Mango", "Cherry", "Apricot", "Blueberry", "Peach", "Kiwi"]
+
+const letterA = "a"
+// Expected output: ["Mango", "Apricot", "Peach"]
+const letterE = "e"
+// Expected output: ["Cherry", "Blueberry", "Peach"]
+
+const wordSearch = (array, string) => {
+    let filteredArray = array.filter(value => value.toLowerCase().includes(string))
+    return filteredArray
+}
+
+console.log(wordSearch(fruitArray, letterA))
+console.log(wordSearch(fruitArray, letterE))
+
