@@ -7,9 +7,7 @@ const secretCodeWord3 = "Eccentric"
 
 const encrypt = (string) => {
     // turn string into an array with each letter being indexed
-    let working_array = string.split('')
-    // need to save the .map into a new array or set the current variable to the mapped values since map isn't a mutator method
-    working_array = working_array.map ((value) => {
+    return string.split('').map ((value) => {
         if (value.toLowerCase() === 'a') {
             return value = '4'
         }
@@ -23,9 +21,7 @@ const encrypt = (string) => {
             return value = '0'
         }
         return value
-    })
-    // convert the array back into a string and return it
-    return working_array.join('')
+    }).join('')  // convert the array back into a string and return it
 }
 
 console.log(encrypt(secretCodeWord1))
@@ -42,8 +38,7 @@ const letterE = "e"
 // Expected output: ["Cherry", "Blueberry", "Peach"]
 
 const wordSearch = (array, string) => {
-    let filteredArray = array.filter(value => value.toLowerCase().includes(string))
-    return filteredArray
+    return array.filter(value => value.toLowerCase().includes(string))
 }
 
 console.log(wordSearch(fruitArray, letterA))
@@ -69,13 +64,9 @@ const fullestHouse = (array) => {
             count[element] += 1  // if it is then I add +1 to the count
         } else {
             count[element] = 1  // if the element isn't already there then I add it and give it a 1 as a value
-        } 
+        } console.log(count)
     }
-    if (Object.values(count).includes(3) && Object.values(count).includes(2)){
-        return true
-    } else {
-        return false
-    }
+    return (Object.values(count).includes(3) && Object.values(count).includes(2))
 }
 
 console.log(fullestHouse(hand1))

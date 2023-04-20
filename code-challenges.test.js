@@ -59,17 +59,14 @@ describe ('encrypt', () => {
 // pseudo code:
 // what's needed: A function 'encrypt' that accepts a string as an argument and returns the string as a coded message. The coded message converts "a" to 4, "e" to 3, "i" to 1, and "o" to 0
 // since JS strings are inmutable, I need to convert it to an array using .split('') which will make each letter its own value in the array.
-    // need a variable to hold the temporary array
 // iterate the resulting array using .map() to change the values accordingly.
-// convert the array back into a string using .join('') 
+// convert back into a string using .join('') 
 // input: a string
 // output: the string modified... "a" to 4, "e" to 3, "i" to 1, and "o" to 0
 
 const encrypt = (string) => {
     // turn string into an array with each letter being indexed
-    let workingArray = string.split('')
-    // need to save the .map into a new array or set the current variable to the mapped values since map isn't a mutator method
-    workingArray = workingArray.map ((value) => {
+    return string.split('').map ((value) => {
         if (value.toLowerCase() === 'a') {
             return value = '4'
         }
@@ -83,9 +80,7 @@ const encrypt = (string) => {
             return value = '0'
         }
         return value
-    })
-    // convert the array back into a string and return it
-    return workingArray.join('')
+    }).join('')  // convert the array back into a string and return it
 }
 
 // output:
@@ -133,15 +128,13 @@ describe ('wordSearch', () => {
 
 // pseudo code:
 // what's needed: function "wordSearch" that accepts an array and a single letter string as arguments and returns an array with only values containing the string
-// create a working array to hold the filtered items
 // iterate the array using .filter() to pick out only the values containing the argument string
     // found that I need to do value.toLowerCase().include in order to match casing or it misses values
 // input: an array and a string
 // output: an array containing only values that contain the string
 
 const wordSearch = (array, string) => {
-    let filteredArray = array.filter(value => value.toLowerCase().includes(string))
-    return filteredArray
+    return array.filter(value => value.toLowerCase().includes(string))
 }
 
 // output:
@@ -205,13 +198,9 @@ const fullestHouse = (array) => {
             count[element] += 1  // if it is then I add +1 to the count
         } else {
             count[element] = 1  // if the element isn't already there then I add it and give it a 1 as a value
-        } 
-    } // at this point count has become a dictionary-like-object so I need to access the values and check for full house
-    if (Object.values(count).includes(3) && Object.values(count).includes(2)){
-        return true
-    } else {
-        return false
+        } console.log(count)
     }
+    return (Object.values(count).includes(3) && Object.values(count).includes(2))
 }
 
 // output: 
