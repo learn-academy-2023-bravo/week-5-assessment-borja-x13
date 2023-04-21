@@ -24,9 +24,7 @@ end
 # create child class 
 class Supercar < Car
     def initialize (color, transmission, engine_size, max_speed)
-        super(color)
-        super(transmission)
-        super(engine_size)
+        super()
         @max_speed = max_speed
     end
 end 

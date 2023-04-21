@@ -36,8 +36,8 @@ us_states = { northwest: ['Washington', 'Oregon', 'Idaho'], southwest: ['Califor
 # input: array of hashes
 # output: one dimentional array
 
-def crush_the_hash (array)
-    array.values.flatten.sort    
+def crush_the_hash (hash)
+    hash.values.flatten.sort    
 end
 
 p crush_the_hash(us_states) # ["Arizona", "California", "Idaho", "Maine", "Nevada", "New Hampshire", "Oregon", "Rhode Island", "Washington"]
@@ -66,22 +66,17 @@ class Bike
     end
 
     def bike_info
-        "The #{model} bike has #{wheels} wheels and is going at #{current_speed} mph."
+        "The #{@model} bike has #{@wheels} wheels and is going at #{@current_speed} mph."
     end
 
     def pedal_faster new_speed
         @current_speed += new_speed
-        "You are now going #{current_speed} mph."     
+        "You are now going #{@current_speed} mph."     
     end
 
     def brake new_speed
-        if @current_speed - new_speed < 0
-            @current_speed = 0
-        else 
-            @current_speed -= new_speed
-        end
-
-        "You are now going #{current_speed} mph." 
+        @current_speed = [@current_speed - new_speed, 0].max
+        "You are now going #{@current_speed} mph." 
     end
 end
 
